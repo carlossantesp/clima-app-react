@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Clima = ({ resultado }) => {
   const { name, main } = resultado;
   if (!name) return null;
 
-  //grados kelvin
+  // grados kelvin
   const kelvin = 273.15;
   return (
     <div className="card-panel white col s12">
@@ -26,6 +27,10 @@ const Clima = ({ resultado }) => {
       </div>
     </div>
   );
+};
+
+Clima.propTypes = {
+  resultado: PropTypes.object.isRequired,
 };
 
 export default Clima;

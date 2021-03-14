@@ -23,7 +23,6 @@ function App() {
 
         const resp = await fetch(url);
         const resultado = await resp.json();
-
         setResultado(resultado);
         setConsultar(false);
 
@@ -36,11 +35,12 @@ function App() {
       }
     };
     consultaAPI();
+    // eslint-disable-next-line
   }, [consultar]);
 
   let componente;
   if (error) {
-    componente = <Error mensaje="No hat resultados" />;
+    componente = <Error mensaje="No hay resultados" />;
   } else {
     componente = <Clima resultado={resultado} />;
   }
