@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import Clima from "./components/Clima";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 
@@ -22,6 +23,7 @@ function App() {
         const resultado = await resp.json();
 
         setResultado(resultado);
+        setConsultar(true);
       }
     };
     consultaAPI();
@@ -40,7 +42,9 @@ function App() {
                 setConsultar={setConsultar}
               />
             </div>
-            <div className="col m6 s12">2</div>
+            <div className="col m6 s12">
+              <Clima resultado={resultado} />
+            </div>
           </div>
         </div>
       </div>
