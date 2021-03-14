@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 
-const Formulario = () => {
-  const [search, setSearch] = useState({
-    ciudad: "",
-    pais: "",
-  });
+const Formulario = ({ search, setSearch, setConsultar }) => {
   const [error, setError] = useState(false);
 
   const { ciudad, pais } = search;
@@ -24,6 +20,7 @@ const Formulario = () => {
     }
 
     setError(false);
+    setConsultar(true);
   };
 
   return (
@@ -58,11 +55,12 @@ const Formulario = () => {
       </div>
 
       <div className="input-field col s12">
-        <input
+        <button
           type="submit"
-          value="Buscar Clima"
-          className="waves-effect waves-light btn-large btn-block yellow accent-4"
-        />
+          className="waves-effect waves-light btn-large btn-block yellow accent-4 col s12"
+        >
+          Buscar Clima
+        </button>
       </div>
     </form>
   );
