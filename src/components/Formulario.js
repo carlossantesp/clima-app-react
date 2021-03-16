@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import Error from "./Error";
+import {
+  FormularioContainer,
+  GroupInput,
+  LabelForm,
+  InputForm,
+  SelectForm,
+  Button,
+  SelectIcon,
+} from "../styles/StyledFormulario";
 import PropTypes from "prop-types";
 
 const Formulario = ({ search, setSearch, setConsultar }) => {
@@ -26,22 +35,24 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormularioContainer onSubmit={handleSubmit}>
       {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
-      <div className="input-field col s12">
-        <input
+      <GroupInput>
+        <LabelForm htmlFor="ciudad">Ciudad:</LabelForm>
+        <InputForm
           type="text"
           name="ciudad"
           id="ciudad"
+          placeholder="Introduzca nombre de ciudad"
           value={ciudad}
           onChange={handleChange}
         />
-        <label htmlFor="ciudad">Ciudad:</label>
-      </div>
+      </GroupInput>
 
-      <div className="input-field col s12">
-        <select name="pais" id="pais" value={pais} onChange={handleChange}>
-          <option value="">-- Selecione un país--</option>
+      <GroupInput>
+        <LabelForm htmlFor="pais">País: </LabelForm>
+        <SelectForm name="pais" id="pais" value={pais} onChange={handleChange}>
+          <option value="">Seleccione un País</option>
           <option value="BO">Bolivia</option>
           <option value="US">Estados Unidos</option>
           <option value="MX">México</option>
@@ -50,19 +61,18 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
           <option value="CR">Costa Rica</option>
           <option value="ES">España</option>
           <option value="PE">Perú</option>
-        </select>
-        <label htmlFor="pais">País: </label>
-      </div>
+        </SelectForm>
+        <SelectIcon>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+          </svg>
+        </SelectIcon>
+      </GroupInput>
 
-      <div className="input-field col s12">
-        <button
-          type="submit"
-          className="waves-effect waves-light btn-large btn-block yellow accent-4 col s12"
-        >
-          Buscar Clima
-        </button>
-      </div>
-    </form>
+      <GroupInput>
+        <Button type="submit">Buscar Clima</Button>
+      </GroupInput>
+    </FormularioContainer>
   );
 };
 

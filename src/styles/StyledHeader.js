@@ -2,7 +2,7 @@ import tw, { styled } from "twin.macro";
 
 export const HeaderContainer = styled.div`
   ${tw`
-    bg-blue-800
+    bg-blue-900
     w-full
     flex
     items-center
