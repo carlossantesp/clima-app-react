@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Clima from "./components/Clima";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 import Error from "./components/Error";
+import { Container } from "./styles/StyledApp";
 
 function App() {
   const [search, setSearch] = useState({
@@ -46,7 +47,7 @@ function App() {
   }
 
   return (
-    <Fragment>
+    <Container>
       <Header titulo="Clima React App" />
       <div className="contenedor-form">
         <div className="container">
@@ -62,7 +63,7 @@ function App() {
           </div>
         </div>
       </div>
-    </Fragment>
+    </Container>
   );
 }
 
