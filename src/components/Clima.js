@@ -2,26 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Clima = ({ resultado }) => {
-  const { name, main } = resultado;
+  const { name, main, weather } = resultado;
   if (!name) return null;
 
-  // grados kelvin
-  const kelvin = 273.15;
   return (
     <div className="card-panel white col s12">
       <div className="black-text">
+        <img
+          className="center"
+          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          alt="Icono"
+        />
         <h2>Clima de {name} es:</h2>
         <p className="temperatura">
-          {parseFloat(main.temp - kelvin, 10).toFixed(2)} <span>&#x2103;</span>
+          {main.temp} <span>&#x2103;</span>
         </p>
         <p>
-          Temperatura Máxima:
-          {parseFloat(main.temp_max - kelvin, 10).toFixed(2)}{" "}
+          Temperatura Máxima: {main.temp_max}
           <span>&#x2103;</span>
         </p>
         <p>
-          Temperatura Minima:
-          {parseFloat(main.temp_min - kelvin, 10).toFixed(2)}{" "}
+          Temperatura Minima: {main.temp_min}
           <span>&#x2103;</span>
         </p>
       </div>

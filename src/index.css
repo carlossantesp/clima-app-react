@@ -3,6 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.center {
+  margin-inline: auto;
+  display: block;
+}
 nav .brand-logo {
   display: block;
   text-align: center;
