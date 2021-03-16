@@ -17,6 +17,8 @@ export const Wrapper = styled.div`
 export const MainSection = styled.main`
   ${tw`
     p-4 text-center w-full
+    lg:max-w-6xl
+    mx-auto mt-8
   `}
 `;
 export const AsideSection = styled.aside`
