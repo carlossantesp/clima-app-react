@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { api } from "./config/api";
 import Clima from "./components/Clima";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 import Error from "./components/Error";
-import { Container } from "./styles/StyledApp";
+import {
+  Container,
+  Wrapper,
+  MainSection,
+  AsideSection,
+} from "./styles/StyledApp";
+import Footer from "./components/Footer";
 
 function App() {
   const [search, setSearch] = useState({
@@ -19,8 +26,7 @@ function App() {
   useEffect(() => {
     const consultaAPI = async () => {
       if (consultar) {
-        const appId = "250b1a21df32eb2602b9372e8fb06a67";
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}&lang=es&units=metric`;
+        const url = `${api.url}/data/${api.version}/weather?q=${ciudad},${pais}&appid=${api.key}&lang=es&units=metric`;
 
         const resp = await fetch(url);
         const resultado = await resp.json();
@@ -48,21 +54,18 @@ function App() {
 
   return (
     <Container>
-      <Header titulo="Clima React App" />
-      <div className="contenedor-form">
-        <div className="container">
-          <div className="row">
-            <div className="col m6 s12">
-              <Formulario
-                search={search}
-                setSearch={setSearch}
-                setConsultar={setConsultar}
-              />
-            </div>
-            <div className="col m6 s12">{componente}</div>
-          </div>
-        </div>
-      </div>
+      <Header titulo="Weather App" />
+      <Wrapper>
+        <AsideSection>
+          <Formulario
+            search={search}
+            setSearch={setSearch}
+            setConsultar={setConsultar}
+          />
+        </AsideSection>
+        <MainSection>{componente}</MainSection>
+      </Wrapper>
+      <Footer autor="Carlos Santillan" />
     </Container>
   );
 }

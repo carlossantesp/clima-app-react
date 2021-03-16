@@ -4,7 +4,10 @@ export const HeaderContainer = styled.div`
   ${tw`
     bg-blue-800
     w-full
-    py-4
+    flex
+    items-center
+    justify-center
+    h-16
   `}
 `;
 export const HeaderBrand = styled.div`
