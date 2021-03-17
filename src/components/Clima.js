@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { api } from "../config/api";
 import IconoThermometer from "../assets/thermometer.svg";
 import IconoHumidity from "../assets/humidity.svg";
 import IconoPressure from "../assets/pressure.svg";
@@ -27,7 +28,7 @@ const Clima = ({ resultado }) => {
           </TitleCard>
           <img
             className="center"
-            src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+            src={`${api.imageURL}/${weather[0].icon}@4x.png`}
             alt="Icono"
           />
           <NumberCard>
