@@ -4,6 +4,7 @@ import Clima from "./components/Clima";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 import Error from "./components/Error";
+import Spinner from "./components/Spinner";
 import {
   Container,
   Wrapper,
@@ -20,6 +21,7 @@ function App() {
   const [consultar, setConsultar] = useState(false);
   const [resultado, setResultado] = useState({});
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { ciudad, pais } = search;
 
@@ -32,10 +34,12 @@ function App() {
         const resultado = await resp.json();
         setResultado(resultado);
         setConsultar(false);
+        setLoading(false);
 
         //Detecta si hubo resultados correctos en la consulta
         if (resultado.cod === "404") {
           setError(true);
+          setLoading(false);
         } else {
           setError(false);
         }
@@ -61,9 +65,11 @@ function App() {
             search={search}
             setSearch={setSearch}
             setConsultar={setConsultar}
+            setLoading={setLoading}
+            loading={loading}
           />
         </AsideSection>
-        <MainSection>{componente}</MainSection>
+        <MainSection>{loading ? <Spinner /> : componente}</MainSection>
       </Wrapper>
       <Footer autor="Carlos Santillan" />
     </Container>

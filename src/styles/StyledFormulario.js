@@ -46,5 +46,6 @@ export const Button = styled.button`
   ${tw`
     appearance-none inline-block font-semibold p-4 border-none bg-gray-800 text-gray-200 uppercase shadow-md duration-150
     hover:bg-gray-700 hover:cursor-pointer hover:shadow-lg
+    disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed
   `}
 `;

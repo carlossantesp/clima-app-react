@@ -11,7 +11,13 @@ import {
 } from "../styles/StyledFormulario";
 import PropTypes from "prop-types";
 
-const Formulario = ({ search, setSearch, setConsultar }) => {
+const Formulario = ({
+  search,
+  setSearch,
+  setConsultar,
+  setLoading,
+  loading,
+}) => {
   const [error, setError] = useState(false);
 
   const { ciudad, pais } = search;
@@ -29,9 +35,9 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
       setError(true);
       return;
     }
-
     setError(false);
     setConsultar(true);
+    setLoading(true);
   };
 
   return (
@@ -71,7 +77,9 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
       {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
 
       <GroupInput>
-        <Button type="submit">Buscar Clima</Button>
+        <Button type="submit" disabled={loading ? "disabled" : null}>
+          Buscar Clima
+        </Button>
       </GroupInput>
     </FormularioContainer>
   );
@@ -81,6 +89,8 @@ Formulario.propTypes = {
   search: PropTypes.object.isRequired,
   setSearch: PropTypes.func.isRequired,
   setConsultar: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Formulario;
