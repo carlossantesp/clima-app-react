@@ -36,7 +36,6 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
 
   return (
     <FormularioContainer onSubmit={handleSubmit}>
-      {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
       <GroupInput>
         <LabelForm htmlFor="ciudad">Ciudad:</LabelForm>
         <InputForm
@@ -68,6 +67,8 @@ const Formulario = ({ search, setSearch, setConsultar }) => {
           </svg>
         </SelectIcon>
       </GroupInput>
+
+      {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
 
       <GroupInput>
         <Button type="submit">Buscar Clima</Button>
